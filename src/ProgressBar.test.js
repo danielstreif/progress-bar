@@ -13,13 +13,13 @@ test("renders filler", () => {
     expect(container.querySelector(".filler")).toBeTruthy();
 });
 
-test("renders percentage", () => {
+test("renders correct percentage", () => {
     render(<ProgressBar percentage="42" />);
     const Element = screen.getByText(/42%/i);
     expect(Element).toBeInTheDocument();
 });
 
-test("renders calculated percentage", () => {
+test("renders correct calculated percentage", () => {
     render(<ProgressBar value={40} minValue={0} maxValue={200} />);
 
     const Element = screen.getByText(/20%/i);

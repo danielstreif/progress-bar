@@ -1,25 +1,22 @@
 import "./ProgressBar.css";
 import { useState } from "react";
 
-export default function ProgressBar(props) {
+export default function ProgressBar({ percentage, value, minValue, maxValue }) {
     const [error, setError] = useState(false);
 
-    const percentage = () => {
-        if (props.percentage >= 0 && props.percentage <= 100) {
-            return props.percentage;
+    const progress = () => {
+        if (percentage >= 0 && percentage <= 100) {
+            return percentage;
         } else if (
-            props.value >= props.minValue &&
-            props.value <= props.maxValue &&
-            props.minValue < props.maxValue
+            value >= minValue &&
+            value <= maxValue &&
+            minValue < maxValue
         ) {
-            return (
-                ((props.value - props.minValue) * 100) /
-                (props.maxValue - props.minValue)
-            );
+            return ((value - minValue) * 100) / (maxValue - minValue);
         } else {
-            if (props.percentage < 0) {
+            if (percentage < 0) {
                 console.log("You provided a negative percentage.");
-            } else if (props.percentage > 100) {
+            } else if (percentage > 100) {
                 console.log("You provided a percentage above 100.");
             } else {
                 console.log("You provided invalid values.");
@@ -31,8 +28,8 @@ export default function ProgressBar(props) {
     return (
         <div className="progress-bar">
             {!error && (
-                <div className="filler" style={{ width: `${percentage()}%` }}>
-                    <div className="info-text">{`${percentage()}%`}</div>
+                <div className="filler" style={{ width: `${progress()}%` }}>
+                    <div className="info-text">{`${progress()}%`}</div>
                 </div>
             )}
             {error && (
