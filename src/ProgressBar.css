@@ -1,10 +1,10 @@
 .progress-bar {
     position: relative;
-    box-shadow: 0 0 20px 5px rgba(100, 149, 237, 0.3);
+    box-shadow: 0 0 10px rgba(100, 149, 237, 0.3);
     border-radius: 25px;
     height: 20px;
     width: calc(100% - 10px);
-    margin: 5px;
+    margin: 10px;
 }
 
 .filler {
